@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      - DB_USER=sql5712813
+      - DB_PASSWORD=ZJavBXXU7s
+      - DB_HOST=sql5.freesqldatabase.com
+      - DB_PORT=3306
+      - DB_NAME=sql5712813
+      - JWT_SECRET=DaEcJNDu9OVPownm6c1FDt3pCT+YtK20mkwsTKdQZaM=
+
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ZJavBXXU7s
+      MYSQL_DATABASE: sql5712813
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
